@@ -7,6 +7,7 @@ TagManager:
   - OB
   - Ground
   - Double Jump
+  - CoinCollectable
   layers:
   - Default
   - TransparentFX

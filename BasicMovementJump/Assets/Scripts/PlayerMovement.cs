@@ -101,6 +101,15 @@ public class PlayerMovement : MonoBehaviour
 
             Destroy(collision.gameObject);
         }
+        else if(collision.gameObject.CompareTag("CoinCollectable"))
+        {
+            //get value of collectable
+            int collectableValue = collision.GetComponent<Collectable>().getCollectableValue();
+            //destroy collectable
+            collision.GetComponent<Collectable>().destroyCollectable();
+            //add to the player score
+            GetComponent<PlayerScore>().setPlayerScore(collectableValue);
+        }
     }
 
     //private void OnCollisionExit2D(Collision2D collision)

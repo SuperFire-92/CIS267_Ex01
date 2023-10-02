@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
@@ -7,6 +8,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class PlayerScore : MonoBehaviour
 {
     private int playerScore;
+    public TMP_Text guiScore;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class PlayerScore : MonoBehaviour
     public void setPlayerScore(int val)
     {
         playerScore += val;
+        guiScore.text = "Score: " + playerScore.ToString();
         Debug.Log("Current Score: " + playerScore);
     }
 }
