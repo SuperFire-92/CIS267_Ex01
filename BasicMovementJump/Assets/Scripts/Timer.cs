@@ -6,14 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
-    private float time;
+    public float time;
     private TMP_Text guiTime;
+
+    //Assigned via Unity Editor
+    public GameObject gameManager;
+    //Assigned via GetComponent<GameManager>()
+    private GameManager gm;
+
     // Start is called before the first frame update
     void Start()
     {
-        time = 20;
+        gm = gameManager.GetComponent<GameManager>();
         guiTime = GetComponent<TMP_Text>();
+        updateGUITime();
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -28,13 +36,14 @@ public class Timer : MonoBehaviour
         updateGUITime();
         if (timeUp())
         {
-            SceneManager.LoadScene("SampleScene");
+            gm.setGameOver(true);
+
         }
     }
 
     public void updateGUITime()
     {
-        guiTime.text = "Time: " + time;
+        guiTime.text = "Time: " + (int) (time + 1);
     }
 
     public bool timeUp()

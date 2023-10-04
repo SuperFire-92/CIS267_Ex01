@@ -16,9 +16,13 @@ public class PlayerMovement : MonoBehaviour
     private int numJumps;
     private int maxNumJumps;
 
+    public GameObject gameManager;
+    private GameManager gm;
+
     // Start is called before the first frame update
     void Start()
     {
+        gm = gameManager.GetComponent<GameManager>();
         //Debug.Log("Start");
         //I can only get this compenent using the following line of code
         //becuase the rigidbody2d is attached to the player and this script
@@ -82,7 +86,8 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("OB"))
         {
             //Need to import sceneManagement
-            SceneManager.LoadScene("SampleScene");
+            //SceneManager.LoadScene("SampleScene");
+            gm.setGameOver(true);
         }
         else if (collision.gameObject.CompareTag("Ground"))
         {
